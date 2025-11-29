@@ -1,19 +1,18 @@
 /* 
 Queremos hacer una aplicación en JavaScript para gestionar edificios con la información de la situación del edificio y de los propietarios de cada piso. 
-Para ello queremos almacenar la siguiente información de cada edificio:
-
-    calle. número. código postal. plantas del edificio (dentro de cada planta tendremos un número de puertas y para cada puerta almacenaremos el nombre del propietario).
+Para ello queremos almacenar la siguiente información de cada edificio: calle. número. código postal. plantas del edificio 
+(dentro de cada planta tendremos un número de puertas y para cada puerta almacenaremos el nombre del propietario).
 
 Se pide:
     Crear un objeto que nos permita instanciar edificios. Cada vez que instanciemos un edificio le pasaremos la calle, número y código postal como parámetros.  
 */
 
 function Edificio (calle, numero, codigo) {
-
         this.calle = calle;
         this.numero = numero;
         this.codigo = codigo;
         this.plantas = new Array();
+        // this.plantas = [];
 
     //Cada vez que se crea un edificio que muestre automáticamente un mensaje del estilo:
     // construido nuevo edificio en calle: xxxxxx, nº: xx, CP: xxxxx.
@@ -57,9 +56,9 @@ function Edificio (calle, numero, codigo) {
         if (totalPlantas<=0) inicio = 0;
         else inicio = totalPlantas-1;
 
-        for (i = inicio; i<totalPlantas+numplantas; i++) {
+        for (let i = inicio; i<totalPlantas+numplantas; i++) {
             this.plantas[i] = new Array(puertas);
-            for(j=0; j<puertas; j++) {
+            for (let j=0; j<puertas; j++) {
                 this.plantas[i][j] = "";
             }
         }
@@ -69,9 +68,13 @@ function Edificio (calle, numero, codigo) {
     this.imprimePlantas = function() {
         document.write("<h2>Listado de propietarios del edificio calle " + this.calle + " número " + this.numero + "</h2>");
     
-        for (i=0; i<this.plantas.length; i++) {
-            for (j=0;j<this.plantas[i].length; j++){
-                document.write("el propietario de la planta " + (i+1) + " puerta " + (j+1) + " es " + this.plantas[i][j] + "<br/>");
+        for (let i=0; i<this.plantas.length; i++) {
+            for (let j=0;j<this.plantas[i].length; j++){
+                let propietario = "desconocido";
+                
+                if(this.plantas[i][j] != "") propietario = this.plantas[i][j];  
+
+                document.write("el propietario de la planta " + (i+1) + " puerta " + (j+1) + " es " + propietario + "<br/>");
             }
         }
     };
@@ -81,7 +84,7 @@ function Edificio (calle, numero, codigo) {
        // xxxxxxxx es ahora el propietario de la puerta x de la planta x.
     this.agregarPropietario = function(nombre,planta,puerta) {  
         this.plantas[planta-1][puerta-1] = nombre;
-        document.write(nombre + "es ahora el propietario de la puerta: " + puerta + " de la planta: " + planta + "<br/>");
+        document.write(nombre + " es ahora el propietario de la puerta: " + puerta + " de la planta: " + planta + "<br/>");
     };
 };
 
@@ -148,4 +151,4 @@ Listado de propietarios del edificio calle García Prieto número 58
     Propietario del piso 2 de la planta 3: Pedro Meijide.
 
 */
-edificioA.imprimePlantas();
+edificioA.imprimePlantas(); 
