@@ -83,36 +83,9 @@ Ejercicio 2: Inventario de productos con objetos y arrays
     Crea una función llamada agregarProducto que reciba como argumentos un nombre, una cantidad y un precio, y que añada el nuevo producto al objeto inventario. 
  */
 
-function DatosProducto(cantidad, precio){
-    this.cantidad = cantidad;
-    this.precio = precio;
-};
-
-function Inventario(nombre, DatosProducto){
-    this.nombre = nombre;
-    this.DatosProducto = DatosProducto;
-};
-
-const datosManzanas = new DatosProducto(6, 0.75);
-const manzanas = new Inventario("manzanas", datosManzanas);
-
-/* sintaxis literal de objetos
-
-function DatosProducto(cantidad, precio){
-    this.cantidad = cantidad;
-    this.precio = precio;
-};
-
-function Inventario(nombre, DatosProducto){
-    this.nombre = nombre;
-    this.DatosProducto = DatosProducto;
-};
-
-const datosManzanas = new DatosProducto(6, 0.75);
-const manzanas = new Inventario("manzanas", datosManzanas);
-
-*/
+//Enfoque Literal (Objeto Mapa)
 const Inventario = {
+    // el nombre será la clave para acceder a los datos del mapa
     "manzanas": {
         cantidad: 50,
         precio: 0.75
@@ -125,15 +98,69 @@ const Inventario = {
         cantidad: 40,
         precio: 0.80
     }
+};   
+ 
+const obtenerTotalInventario = (Inventario) => {
+    let valorTotal = 0;
+
+    // Object.entries() convierte el objeto en un array de arrays:
+    // [["manzanas", {cantidad: 50, precio: 0.75}], ["plátanos", ...], ...]
+    const entradas = Object.entries(Inventario);
+
+    // Iteramos sobre cada entrada [nombreProducto, datosProducto]
+    for (const [nombreProducto, datosProducto] of entradas) {
+         
+        const valorStock = datosProducto.cantidad * datosProducto.precio;
+        valorTotal += valorStock;
+        
+        console.log(`- ${nombreProducto}: ${datosProducto.cantidad} unidades a ${datosProducto.precio}€ cada una = ${valorStock.toFixed(2)}€`);
+    }
+
+    // Formateara dos decimales
+    return valorTotal.toFixed(2);
 };
 
-const obtenerTotalInventario = function(){
-
+const agregarProducto = (Inventario, nombre, cantidad, precio) => {
+    // Agregamos la nueva propiedad al objeto inventario usando el nombre como clave.
+    // Si el producto ya existe, se sobrescribe.
+    Inventario[nombre] = {
+        cantidad: cantidad,
+        precio: precio
+    };
+    console.log(`\n Producto '${nombre}' agregado al inventario.`);
 };
 
-const agregarProducto = function(nombre,cantidad,precio) {
-    
+// --- Ejecución y Prueba ---
+console.log("--- Inventario Inicial ---");
+const totalInicial = obtenerTotalInventario(Inventario);
+console.log(`\n VALOR TOTAL: ${totalInicial}€`);
+console.log("--------------------------");
+
+// Agregamos un nuevo producto
+agregarProducto(Inventario, "peras", 30, 0.95);
+
+// Recalculamos el valor total con el nuevo producto
+console.log("\n--- Inventario Final ---");
+const totalFinal = obtenerTotalInventario(Inventario);
+console.log(`\n VALOR TOTAL: ${totalFinal}€`);
+
+
+/* Enfoque de Funciones Constructoras (POO Clásica)
+
+function DatosProducto(cantidad, precio){
+    this.cantidad = cantidad;
+    this.precio = precio;
 };
+
+function Inventario(nombre, DatosProducto){
+    this.nombre = nombre;
+    this.DatosProducto = DatosProducto;
+};
+
+const datosManzanas = new DatosProducto(6, 0.75);
+const manzanas = new Inventario("manzanas", datosManzanas);
+
+*/
 
 /*
 
@@ -144,6 +171,36 @@ Ejercicio 3: Promedio de calificaciones de estudiantes
     Crea una función llamada calcularPromedioEstudiante que reciba un objeto de estudiante y devuelva el promedio de sus calificaciones.
     Crea una función llamada mostrarPromedios que reciba el array estudiantes y use la función calcularPromedioEstudiante para mostrar en la consola el nombre del estudiante y su promedio. 
 */
+
+class Estudiante {
+    constructor(nombre, calificaciones) {
+        this.nombre = nombre;
+        this.calificaciones = calificaciones;
+    }
+
+    calcularPromedio() {
+        const suma = this.calificaciones.reduce((acc, cal) => acc + cal, 0);
+        return (suma / this.calificaciones.length).toFixed(2);
+    }
+}
+
+const estudiantes = [
+    new Estudiante("Ana Boduro", [8.5, 7.8, 9.0]),
+    new Estudiante("José Luis", [5.9, 6.2, 7.0])
+];
+
+const mostrarPromedios = (estudiantes) => {
+    console.log("--- Promedios de Estudiantes ---");
+    
+    estudiantes.forEach(estudiante => {
+        
+        const promedio = estudiante.calcularPromedio();
+        
+        console.log(`| ${estudiante.nombre}: Promedio = ${promedio}`);
+    });
+};
+
+mostrarPromedios(estudiantes);
 
 /*
 
