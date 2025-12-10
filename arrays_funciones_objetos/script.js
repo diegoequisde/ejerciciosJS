@@ -116,7 +116,7 @@ const obtenerTotalInventario = (Inventario) => {
         console.log(`- ${nombreProducto}: ${datosProducto.cantidad} unidades a ${datosProducto.precio}€ cada una = ${valorStock.toFixed(2)}€`);
     }
 
-    // Formateara dos decimales
+    // Formatear a dos decimales
     return valorTotal.toFixed(2);
 };
 
@@ -212,3 +212,47 @@ Ejercicio 4: Manipulación de un array con funciones
     Encuentra el número más grande del array.
     Crea un nuevo array con solo los números pares del array original usando un método de array como filter
 */
+
+let numeros = [1,5,234,64,873,3,21,34];
+
+console.log("--- for Each (function())--- ");
+numeros.forEach(function (n) {
+   console.log(n); 
+}) ;
+
+console.log("--- for Each arrow function ---");
+numeros.forEach((n) => {
+    console.log(n);
+});
+
+
+// const calcularPromedio = function (numeros) {    // Las expresiones function son convenientes cuando se pasa una función como argumento a otra función
+function calcularPromedio(n) {
+    let suma = 0;
+
+    for (let i=0; i<n.length; i++){
+    suma += n[i];
+    }
+    
+    return(suma/n.length);
+};
+
+// llamada a la funcion
+const media = calcularPromedio(numeros);
+console.log("La media es " + media);
+
+
+function calcularMayor(n){
+    let numerosOrdenados = n.sort();
+    let mayor = numerosOrdenados[n.length-1];
+    return mayor;
+
+    // otra opcion sería declarar mayor e ir comparando con un for si cada numero es mayor que el guardado
+}
+
+const numMayor = calcularMayor(numeros);
+console.log("El mayor es " + numMayor);
+
+//   Crea un nuevo array con solo los números pares del array original usando un método de array como filter
+let nuevoArray = numeros.filter((n) => n%2 == 0 );
+console.log(nuevoArray);
