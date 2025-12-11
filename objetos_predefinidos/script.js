@@ -88,3 +88,86 @@ Y ahora fuera del código de la función que siga haciendo lo siguiente:
 Donde aparecen las XXXX tendrá que aparecer el cálculo o texto que corresponda.
 
 */
+
+document.write("<h1>TAREA DWEC03</H2>");
+let nombre = prompt("introduzca su nombre y apellidos");
+let dia = prompt("introduzca DIA de nacimiento");
+let mes = prompt("introduzca MES de nacimiento");
+let anho = prompt("introduzca AÑO de nacimiento");
+document.write("Buenos días " + nombre);
+document.write("<br/>tu nombre tiene " + nombre.length + " caracteres");
+
+let indiceA = nombre.indexOf('A'); // -1 si no la encuentra
+let indicea = nombre.indexOf('a');  
+
+let primera = Math.min(
+    indiceA > -1 ? indiceA : Infinity, // Ignora -1 en la comparación de Math.min
+    indicea > -1 ? indicea : Infinity 
+);
+
+if (primera === Infinity) {
+    document.write("<br/>La letra A no se encontró en tu nombre por el principio.");
+} else {
+    document.write("<br/>La primera letra A de tu nombre está en la posición: " + primera );
+}
+
+let ultimaA = nombre.lastIndexOf('A');
+let ultimaa = nombre.lastIndexOf('a');
+
+let ultima = Math.max(ultimaA, ultimaa)
+if (ultima === -1) {
+    document.write("<br/>La letra A no se encontró en tu nombre por el final.");
+} else {
+    document.write("<br/>La última letra A de tu nombre está en la posición: " + ultima );
+}
+
+let nombreCorto = nombre.substring(3,nombre.length);
+document.write("<br/>Tu nombre menos las 3 primeras letras es: " + nombreCorto );
+
+let nombreMayus = nombre.toUpperCase();
+document.write("<br/>Tu nombre en mayúsculas es: " + nombreMayus );
+
+const fechaActual = new Date();
+const anhoActual = fechaActual.getFullYear();        // Devuelve el año completo (e.g., 2025)
+const mesActual = fechaActual.getMonth();           // Devuelve el mes (0 para Enero, 11 para Diciembre)
+const diaActual = fechaActual.getDate();
+
+let edad = calcularEdad();
+document.write("<br/>Tu edad es: " + edad + " años");
+
+
+function calcularEdad(){
+    let edadFinal = anhoActual - anho;
+
+    if (mesActual <= mes && diaActual < dia) edadFinal -= 1;
+
+    return edadFinal;
+};
+
+/*
+function buscarPrimera(){
+    let posicion;
+
+    for (let i =0; i < nombre.length; i++){
+        if (nombre[i] == 'a' || nombre[i] == 'A') {
+            posicion = i;
+            break;
+        }
+    }
+    return posicion;
+}
+
+function buscarUltima(){
+    let posicion;
+
+    for (let i = nombre.length-1; i >= 0; i--){
+        if (nombre[i] == 'a' || nombre[i] == 'A') {
+            posicion = i;
+        }
+        break;
+    }
+    return posicion;
+}
+
+*/
+
