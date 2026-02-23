@@ -1,0 +1,27 @@
+<!-- Realiza un programa que mediante eventos y el uso del objeto event, te muestre
+en todo momento la posición actual del ratón en pantalla.
+Para mostrarlo modifica de forma dinámica un elemento HTML (Por ejemplo,
+un <p>) que muestre la posición actual del ratón. -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <p id="mousePosition"></p>
+    
+</body>
+
+<script>
+    document.addEventListener("mousemove", function(event){
+        var x = event.clientX;
+        var y = event.clientY;
+        var positionElement = document.getElementById("mousePosition");
+        positionElement.textContent = "Posición del ratón: (" + x + ", " + y + ")";
+    })
+</script>
+</html>

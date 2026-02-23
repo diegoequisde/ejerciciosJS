@@ -1,0 +1,36 @@
+<!-- Realiza un programa que cuando se presione una tecla, calcule cuántos DNIs
+de 4 cifras (del 0001 al 9999) tienen esa letra y te mostrará los DNIs y sus letras
+en un elemento XHTML(Ejemplo, un <p>).-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <form>
+        <label for = "letraDNI">Introduce la letra de tu DNI</label>
+        <input type="text" id = "letraDNI" name="letraDNI" maxlength=1 required>
+        <input type = "submit" value = "Calcular">
+    </form>
+    <p>El numero de DNIs de 4 cifras con tu letra es:</p>
+    <p id ="resultado"></p>
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event){
+        event.preventDefault();
+        var letra = document.getElementById("letraDNI").value.toUpperCase();
+        var resultadoElement = document.getElementById("resultado");
+        var count = 0;
+        var dnis = [];
+        for(var i=1; i<=9999; i++){
+            var dni = i.toString().padStart(4, '0') + letra;
+            dnis.push(dni);
+            count++;
+        }
+        resultadoElement.textContent = "Número de DNIs: " + count + ". DNIs: " + dnis.join(", ");
+    })
+</script>
+</html>
