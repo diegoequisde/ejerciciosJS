@@ -17,8 +17,9 @@ en un elemento XHTML(Ejemplo, un <p>).-->
     </form>
     <p>El numero de DNIs de 4 cifras con tu letra es:</p>
     <p id ="resultado"></p>
-</body>
+
 <script>
+    // Es esto lo que pide realmente?
     document.querySelector("form").addEventListener("submit", function(event){
         event.preventDefault();
         var letra = document.getElementById("letraDNI").value.toUpperCase();
@@ -33,4 +34,5 @@ en un elemento XHTML(Ejemplo, un <p>).-->
         resultadoElement.textContent = "Número de DNIs: " + count + ". DNIs: " + dnis.join(", ");
     })
 </script>
+</body>
 </html>

@@ -14,8 +14,6 @@ un <p>) que muestre la posición actual del ratón. -->
 <body>
     <p id="mousePosition"></p>
     
-</body>
-
 <script>
     document.addEventListener("mousemove", function(event){
         var x = event.clientX;
@@ -24,4 +22,5 @@ un <p>) que muestre la posición actual del ratón. -->
         positionElement.textContent = "Posición del ratón: (" + x + ", " + y + ")";
     })
 </script>
+</body>
 </html>
