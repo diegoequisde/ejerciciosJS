@@ -1,0 +1,28 @@
+<!-- Haz una función que haga que al pasar el ratón por encima de una etiqueta la muestre en negrita -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <p>Pasa por encima para convertirme en negrita</p>
+    <form>
+        <label for="nombre">Y a mi en cursiva</label>
+        <!-- <input type="text" id="nombre" name="nombre"> -->
+    </form>
+    <script>
+        document.addEventListener("mouseover", function(event){
+            // Importante que el nombre de las estiquetas estén en mayúscula, ya que el tagName devuelve el nombre de la etiqueta en mayúscula
+            if(event.target.tagName === "P"){
+                event.target.style.fontWeight = "bold";
+            }
+            if(event.target.tagName === "LABEL"){
+                event.target.style.fontStyle = "italic";
+            }
+        })
+    </script>
+</body>
+</html>

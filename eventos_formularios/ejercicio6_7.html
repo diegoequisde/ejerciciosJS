@@ -1,0 +1,55 @@
+<!--Implementa una función validarWeb() que valide mediante una expresión regular la URL introducida en un campo de texto llamado url, con los siguientes requisitos:
+- Aceptará http y https.
+- La cadena continuará con “://”, pudiendo omitirse, o no, “www.”
+- El nombre del sitio web podrá contener cualquier cadena de caracteres del tipo letras, números, guiones o puntos.
+- La extensión del dominio únicamente podrá contener 2 o 3 caracteres alfabéticos (letras), minúsculas o mayúsculas.
+- Si el valor del campo url no cumple con el patrón de la expresión regular, la función devolverá el mensaje 
+“La url no tiene un formato válido”; si lo cumple, no devolverá nada.
+
+Implementa un evento para que, mientras el usuario escribe en un campo de texto llamado mensaje, se compruebe la entrada si intenta escribir 
+las palabras prohibidas "spam" o "ad". Si el usuario escribe alguna de esas palabras, se debe borrar esa palabra del campo y mostrar un alert que diga:
+"Contenido no permitido".
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for = "url"> Introduce una url</label>
+        <input type = "text" id = "url" name ="url">
+        <button type = "button" onclick = "validarWeb()"> Validar </button>
+    <br/>
+        <label for = "comentario">Escribe tu comentario</label>
+        <textarea id = "comentario" name = "comentario"></textarea>
+    </form>
+<p id = "mensaje"></p>
+
+    <script>
+        let mensaje = document.getElementById("mensaje");
+
+        function validarWeb(){
+            let url = document.getElementById("url").value;
+            let regex = /^(http|https):\/\/(www\.)?([a-zA-Z0-9\-\.]+)\.([a-zA-Z]{2,3})$/;
+            if (regex.test(url)) mensaje.textContent = "La url tiene un formato válido";
+            else mensaje.textContent = "La url NO tiene un formato válido";
+        }
+
+        document.getElementById("comentario").addEventListener("input", function(event){
+            let texto = event.target.value;
+            if (texto.includes("spam") || texto.includes("ad")){
+                // la g hace que se reemplacen todas las apariciones de la palabra, no solo la primera
+                //  la gi hace que además no distinga entre mayusculas y minusculas
+                event.target.value = texto.replace(/^(spam)$ | ^(ad)/gi, "");
+                alert("Contenido no permitido");
+            }
+        })
+
+    </script>
+</body>
+</html>
