@@ -1,0 +1,31 @@
+<!--Implementa un evento para que, mientras el usuario escribe en área de texto denominada mensaje, se impida la escritura de los caracteres < , > y / 
+(caracteres de etiquetas HTML). Si el usuario intenta pulsar alguna de esas teclas, 
+se debe cancelar el evento para que el carácter no aparezca en el textarea y lanzar un alert: "No se permiten caracteres de marcado HTML".-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+    <form>
+        <label for = "comentario">Escribe tu comentario</label>
+        <textarea id = "comentario" name = "comentario"></textarea>
+    </form>
+<p id = "mensaje"></p>
+
+    <script>
+        let mensaje = document.getElementById("mensaje");
+
+        document.getElementById("comentario").addEventListener("keydown", function(event){
+            if (event.key === "<" || event.key === ">" || event.key === "/"){
+                event.preventDefault();
+                alert("No se permiten caracteres de marcado HTML");
+            }
+        })
+        
+    </script>
+</body>
+</html>

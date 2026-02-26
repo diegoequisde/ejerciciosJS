@@ -1,0 +1,31 @@
+<!--Implementa una función que elimine los espacios que pueda haber al principio y al final de la cadena introducida en un campo de texto. 
+Debe ejecutarse cuando el campo de texto pierde el foco (al salir de él).
+
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+    <form>
+        <label for = "comentario">Escribe tu comentario</label>
+        <textarea id = "comentario" name = "comentario"></textarea>
+        <input type = "button" value = "Eliminar espacios" onclick = "eliminarEspacios()">
+    </form>
+<p id = "mensaje"></p>
+
+    <script>
+        let mensaje = document.getElementById("mensaje");
+        
+        function eliminarEspacios(){
+            let comentario = document.getElementById("comentario").value;
+            comentario = comentario.trim();
+            mensaje.textContent = "Sin espacios: " + comentario;
+        }
+    </script>
+</body>
+</html>
