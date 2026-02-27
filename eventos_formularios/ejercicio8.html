@@ -13,19 +13,26 @@ Debe ejecutarse cuando el campo de texto pierde el foco (al salir de él).
 <body>
     <form>
         <label for = "comentario">Escribe tu comentario</label>
-        <textarea id = "comentario" name = "comentario"></textarea>
+        <textarea id = "campoTexto"></textarea>
         <input type = "button" value = "Eliminar espacios" onclick = "eliminarEspacios()">
     </form>
 <p id = "mensaje"></p>
 
     <script>
-        let mensaje = document.getElementById("mensaje");
+        // let mensaje = document.getElementById("mensaje");
         
-        function eliminarEspacios(){
-            let comentario = document.getElementById("comentario").value;
-            comentario = comentario.trim();
-            mensaje.textContent = "Sin espacios: " + comentario;
-        }
+        // function eliminarEspacios(){
+        //     let comentario = document.getElementById("comentario").value;
+        //     comentario = comentario.trim();
+        //     mensaje.textContent = "Sin espacios: " + comentario;
+        // }
+        let campoTexto = document.getElementById('campoTexto');
+
+        campoTexto.addEventListener('blur', function () {
+        // Elimina los espacios al principio y al final
+        campoTexto.value = campoTexto.value.trim();
+        });
+
     </script>
 </body>
 </html>
