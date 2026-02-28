@@ -1,0 +1,39 @@
+<!--Generar nombre de usuario. Crea un programa que pida al usuario su
+nombre y apellidos y muestre:
+a. El tamaño del nombre más los apellidos (sin contar espacios).
+b. La cadena en minúsculas y en mayúsculas.
+c. Que divida el nombre y los apellidos y los muestre en 3 líneas, de forma
+que se muestre:
+Nombre: / Apellido 1: / Apellido 2:
+d. Generar el nombre de usuario de la siguiente manera: las tres primeras
+letras del nombre y las tres últimas del primer y segundo apellidos.
+Por ejemplo, juan García Pérez tendría como nombre de usuario:
+juaciarez.-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings</title>
+</head>
+<body>
+    <script>
+        let nombreCompleto = prompt("Introduce tu nombre y apellidos:");
+        let nombreSinEspacios = nombreCompleto.replace(/\s/g, '');
+        let tamañoNombre = nombreSinEspacios.length;
+        console.log("a. El tamaño del nombre más los apellidos (sin contar espacios): " + tamañoNombre);
+
+        console.log("b. Cadena en minúsculas: " + nombreCompleto.toLowerCase());
+        console.log("   Cadena en mayúsculas: " + nombreCompleto.toUpperCase());
+
+        let partes = nombreCompleto.split(' ');
+        console.log("c. Nombre: " + partes[0]);
+        console.log("   Apellido 1: " + partes[1]);
+        console.log("   Apellido 2: " + partes[2]);
+
+        let nombreUsuario = partes[0].substring(0, 3) + partes[1].slice(-3) + partes[2].slice(-3);
+        console.log("d. Nombre de usuario: " + nombreUsuario);
+    </script>
+</body>
+</html>
