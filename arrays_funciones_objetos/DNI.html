@@ -1,0 +1,30 @@
+<!-- Validar DNI. Realiza un programa que permita verificar si un DNI es válido.
+el algoritmo de cálculo de la letra de control es el siguiente:
+Para ello, se divide el número entre 23 y el resto se sustituye por la letra
+que corresponda
+RESTO 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
+LETRA T R W A G M Y F P D X B N J Z S Q V H L C K E
+Ejemplo: Cálculo de la letra de DNI correspondiente al número 12345678.
+12345678/23 tiene como resto 14 por lo que la letra de este DNI sería la
+Z.
+No se utilizarán arrays en su implementación. Emplea la secuencia de letras
+como una cadena de caracteres: “TRWAGMYFPDXBNJZSQVHLCKE”-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNI</title>
+    <span id = "mensaje"></span>
+</head>
+<body>
+    <script>
+        let dni = prompt("Introduce tu número de DNI (sin letra)");
+        let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+        let resto = dni%23;
+        let letraDNI = letras.charAt(resto);
+        document.getElementById("mensaje").innerHTML = "La letra de tu DNI es: " + letraDNI;
+    </script>
+</body>
+</html>
