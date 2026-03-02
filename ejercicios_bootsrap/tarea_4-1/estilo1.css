@@ -1,0 +1,39 @@
+.row {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* estilo para los div que comienzan con "col" */
+div[class^="col-"]{
+    border: 1px solid #CBD;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: white;
+
+}
+
+/*para moviles (xs) el color de fondo será gris*/
+body {
+    background-color: #B0BEC5;
+}
+
+/*para tablets (sm) el color de fondo será naranja*/
+@media(min-width: 768px){
+    body {
+        background-color: #FFB74D;
+    }
+}
+
+/*para PC con ancho menor a 1200 (md) el color de fondo será verde*/
+@media(min-width: 992px){
+    body{
+        background-color: #81C784;
+    }
+}
+
+/*para PC con ancho mayor o igual a 1200 (lg) el color de fondo será azul*/
+@media(min-width: 1200px){
+    body{
+        background-color: #5C6BC0;
+    }
+}
